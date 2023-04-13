@@ -1,0 +1,4 @@
+:root {
+    --fullHeight: calc(var(--vh, 1vh) * 100);
+    --fullWidth: calc(var(--vw, 1vw) * 100);
+}
