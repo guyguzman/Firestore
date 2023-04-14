@@ -1,6 +1,5 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, getDoc, getDocs, collection } from "firebase/firestore";
+import { getFirestore, doc, getDoc, getDocs, collection, query, where } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 
@@ -15,13 +14,21 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const db1 = getFirestore(app);
+const db = getFirestore();
 
-// const docRef = doc(db, "people", "sSWD03mjDWliuldDW5Um");
-// const docSnap = await getDoc(docRef);
-// console.log(docSnap.data());
 
-const querySnapshot = await getDocs(collection(db, "people"));
-querySnapshot.docs.forEach((doc) => {
+const collectionVehicles = collection(db, "vehicles");
+const snapshotVehicles = await getDocs(collectionVehicles);
+snapshotVehicles.forEach((doc) => {
+    console.log(doc.id, " >= ", doc.data());
+});
+
+const vehicles = await getDocs(collection(db, "vehicles"));
+vehicles.docs.forEach((doc) => {
     console.log(doc.id, " => ", doc.data());
 });
+
+// const test = db.collection("vehicles").get().then((querySnapshot) => { querySnapshot.forEach((doc) => { console.log(doc.id, " => ", doc.data()); }); });
+
+console.log("Finished...");
