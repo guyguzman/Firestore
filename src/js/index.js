@@ -39,11 +39,32 @@ const docRef4 = doc(db, "vehicles", "KVvCtLcHnEqInfNKPgje");
 const docSnap4 = await getDoc(docRef4);
 console.log(docSnap4.data());
 
-const newDoc = await addDoc(collection(db, "vehicles"), { year: "2019" });
+let addRecord = true;
+if (addRecord) {
+    console.log("Adding record.......................");
+    let yearDoc = await addDoc(collection(db, "vehicles"), { year: "2013" });
+    let yearId = yearDoc.id;
+    let docRefYear = doc(db, "vehicles", yearId);
+    let colRefYear = collection(docRefYear, "makes")
+    let makeDoc = await addDoc(colRefYear, {
+        make: "Tesla"
+    });
+    let makeId = makeDoc.id;
+    let docRefMake = doc(db, "vehicles", yearId, "makes", makeId);
+    let colRefMake = collection(docRefMake, "makes")
+    let modelDoc = await addDoc(colRefMake, {
+        model: "s"
+    });
+    let modelId = modelDoc.id;
+}
 
-// const docRef5 = collection(db, "vehicles", "KVvCtLcHnEqInfNKPgje", "makes");
-// const docSnap5 = await getDoc(docRef5);
-// console.log(docSnap5.data());
+console.log("Example 5------------------");
+const docRef5 = collection(db, "vehicles");
+const docSnap5 = await getDocs(docRef5);
+docSnap5.docs.forEach((doc) => {
+
+    console.log(doc.id, " => ", doc.data());
+});
 
 // const collectionVehicles = collection(db, "vehicles");
 // const snapshotVehicles = await getDocs(collectionVehicles);
