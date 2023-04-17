@@ -150,10 +150,14 @@ let firstDocument = { year: "2016" };
 let databaseName = "vehicles";
 
 //deleteCollection(["Dakota", "2016", "makes", "4MwOouS1JLSBVGlFTbHq", "models"]);
-getCollectionDocuments(collectionPath);
+let newDocs = await getCollectionDocuments(collectionPath);
+console.log(newDocs);
+for (let index = 0; index < newDocs.length; index++) {
+  console.log(newDocs[index].id, newDocs[index].data());
+}
 //testing(...collectionPath);
 // updateDocument("doc2");
-initializeDatabase("dakota", { year: "2017" });
+//initializeDatabase("dakota", { year: "2017" });
 
 let testSpreadData = [1, 2, 3, 4, 5];
 
@@ -192,26 +196,12 @@ function isDocument(collectionPath) {
 async function updateDocument(documentId, documentData) {
   await setDoc(doc(db, "vehicles", documentId), documentData);
 }
+
 async function getCollectionDocuments(collectionPath) {
-  if (true) {
-    console.log("in getCollectionDocuments", collectionPath[0]);
-
-    collectionPath.forEach((path) => {
-      console.log("-" + path + "-");
-    });
-
-    let reference1 = collection(db, "vehicles");
-
+  if (isCollection(collectionPath)) {
     let reference = collection(db, ...collectionPath);
-
-    console.log(reference);
     let snapshot = await getDocs(reference);
-    console.log("snapshot.docs.length = " + snapshot.docs.length);
-    snapshot.docs.forEach((doc) => {
-      console.log(doc.id);
-    });
-
-    return;
+    return snapshot.docs;
   }
 }
 
