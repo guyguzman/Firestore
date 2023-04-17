@@ -6,11 +6,13 @@ yarn-debug.log*
 yarn-error.log*
 firebase-debug.log*
 firebase-debug.*.log*
-build/*.*
-node_modules/*.*
+build/**
+node_modules_x/**
 src/fonts/**
 src/fontawesome/**
 src/lib/**
+src/node_modules/**
+src/firebase/**
 # Firebase cache
 .firebase/
 
