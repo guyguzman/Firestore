@@ -134,7 +134,7 @@ let schema = [
   { name: "models", level: 2 },
 ];
 
-let collectionPath = [
+let collectionPath1 = [
   "vehicles",
   "KVvCtLcHnEqInfNKPgje",
   "makes",
@@ -142,38 +142,25 @@ let collectionPath = [
   "models",
 ];
 
-let collectionPath1 = ["vehicles", "KVvCtLcHnEqInfNKPgje", "makes"];
-
-let documentPath = ["vehicles", "2021", "makes", "4MwOouS1JLSBVGlFTbHq"];
-
+let documentPath1 = ["vehicles", "KVvCtLcHnEqInfNKPgje"];
+let documentPath2 = [
+  "vehicles",
+  "KVvCtLcHnEqInfNKPgje",
+  "makes",
+  "zzZGGkL1gyflRqioOmyc",
+];
 let firstDocument = { year: "2016" };
 let databaseName = "vehicles";
 
 //deleteCollection(["Dakota", "2016", "makes", "4MwOouS1JLSBVGlFTbHq", "models"]);
-let newDocs = await getCollectionDocuments(collectionPath);
+let newDocs = await getCollectionDocuments(collectionPath1);
 console.log(newDocs);
-for (let index = 0; index < newDocs.length; index++) {
-  console.log(newDocs[index].id, newDocs[index].data());
-}
-//testing(...collectionPath);
+
+let newDoc = await getDocument(documentPath2);
+console.log(newDoc);
+
 // updateDocument("doc2");
 //initializeDatabase("dakota", { year: "2017" });
-
-let testSpreadData = [1, 2, 3, 4, 5];
-
-testSpread(...testSpreadData);
-
-function testSpread() {
-  for (let index = 0; index < arguments.length; index++) {
-    //console.log(arguments[index]);
-  }
-}
-
-function testing(...collectionPath) {
-  console.log("Arguments length = " + arguments.length);
-  console.log("testing........");
-  console.log(...collectionPath);
-}
 
 function isCollection(collectionPath) {
   let length = collectionPath.length;
@@ -198,6 +185,7 @@ async function updateDocument(documentId, documentData) {
 }
 
 async function getCollectionDocuments(collectionPath) {
+  console.log(collectionPath);
   if (isCollection(collectionPath)) {
     let reference = collection(db, ...collectionPath);
     let snapshot = await getDocs(reference);
@@ -209,6 +197,25 @@ async function initializeDatabase(databaseName, firstDocument) {
   let yearDoc = await addDoc(collection(db, databaseName), firstDocument);
   let yearId = yearDoc.id;
   console.log("New Database " + yearId);
+}
+
+async function getDocument(collectionPath) {
+  console.log(collectionPath);
+  let reference = doc(db, ...collectionPath);
+  let snapshot = await getDoc(reference);
+  return snapshot.data;
+}
+
+async function deleteDocument(collection, documentId) {
+  let docRef = doc(db, collection, documentId);
+  console.log("Deleting document " + documentId);
+  deleteDoc(doc(db, collection, documentId))
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 async function deleteDatabase(databaseName) {
@@ -247,22 +254,30 @@ async function deleteCollection(collectionPath) {
   }
 }
 
-async function getDocument(collectionPath) {
-  let docRef3 = collection(db, collection, "KVvCtLcHnEqInfNKPgje", "makes");
-  let docSnap3 = await getDocs(docRef3);
-  docSnap3.docs.forEach((doc) => {
-    console.log(doc.id, " => ", doc.data());
-  });
+function Level0(name) {
+  this.name = name;
+  this.fullName = function () {
+    return this.name;
+  };
 }
 
-async function deleteDocument(collection, documentId) {
-  let docRef = doc(db, collection, documentId);
-  console.log("Deleting document " + documentId);
-  deleteDoc(doc(db, collection, documentId))
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+function Level1(name) {
+  this.name = name;
+  this.fullName = function () {
+    return this.name;
+  };
+}
+
+function Level2(name) {
+  this.name = name;
+  this.fullName = function () {
+    return this.name;
+  };
+}
+
+function Level3(name) {
+  this.name = name;
+  this.fullName = function () {
+    return this.name;
+  };
 }
