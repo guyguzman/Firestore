@@ -1,8 +1,8 @@
-import { add, multiply, subtract, divide } from "./testModule.js";
 import {
   initializeApp,
   getApp,
-} from "../node_modules/firebase/app/dist/esm/index.esm.js";
+} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+
 import {
   getFirestore,
   doc,
@@ -12,9 +12,11 @@ import {
   query,
   where,
   addDoc,
-} from "../node_modules/firebase/firestore/dist/esm/index.esm.js";
-import { getAuth } from "../node_modules/firebase/auth/dist/esm/index.esm.js";
-import { getStorage } from "../node_modules/firebase/storage/dist/esm/index.esm.js";
+} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js";
+
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+
+import { getStorage } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-storage.js";
 
 window.onload = function () {
   startUp();
@@ -27,8 +29,6 @@ function startUp() {
   window.addEventListener("resize", () => {
     showWidthHeight();
   });
-  console.log("In common.js");
-  console.log(add(3, 4));
 }
 
 function testFirebase() {
@@ -43,15 +43,15 @@ function testFirebase() {
   };
 
   const app = initializeApp(firebaseConfig);
-  console.log(getApp().name);
-  const db = getFirestore(app);
-  return;
+
   const defaultStorage = getStorage();
+  const db = getFirestore(app);
 
   const defaultFirestore = getFirestore();
   const auth = getAuth();
 
   let topLevelCollection = "vehicles";
+  console.log("..." + getApp().name);
 }
 
 function showWidthHeight() {

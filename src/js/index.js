@@ -1,22 +1,4 @@
-// import { initializeApp, getApp } from "firebase/app";
-// import {
-//   getFirestore,
-//   doc,
-//   getDoc,
-//   getDocs,
-//   collection,
-//   query,
-//   where,
-//   addDoc,
-// } from "firebase/firestore";
-// import { getAuth } from "firebase/auth";
-// import { getStorage } from "firebase/storage";
-
-import {
-  initializeApp,
-  getApp,
-} from "https://cdnjs.cloudflare.com/ajax/libs/firebase/9.19.1/firebase-app.js";
-
+import { initializeApp, getApp } from "firebase/app";
 import {
   getFirestore,
   doc,
@@ -26,11 +8,29 @@ import {
   query,
   where,
   addDoc,
-} from "https://cdnjs.cloudflare.com/ajax/libs/firebase/9.19.1/firebase-firestore.min.js";
+} from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
-import { getAuth } from "https://cdnjs.cloudflare.com/ajax/libs/firebase/9.19.1/firebase-auth.min.js";
+// import {
+//   initializeApp,
+//   getApp,
+// } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
 
-import { getStorage } from "https://cdnjs.cloudflare.com/ajax/libs/firebase/9.19.1/firebase-storage.min.js";
+// import {
+//   getFirestore,
+//   doc,
+//   getDoc,
+//   getDocs,
+//   collection,
+//   query,
+//   where,
+//   addDoc,
+// } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js";
+
+// import { getAuth } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+
+// import { getStorage } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-storage.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDSXpmMhr3oTvIQ9K06hFKl8P1DD1xKz9w",
@@ -47,6 +47,8 @@ const db = getFirestore(app);
 const defaultStorage = getStorage();
 const defaultFirestore = getFirestore();
 const auth = getAuth();
+
+console.log("made it this far...");
 
 let topLevelCollection = "vehicles";
 
