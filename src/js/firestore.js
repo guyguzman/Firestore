@@ -118,24 +118,47 @@ function fetchFile() {
       let level1Object = {};
       let level2Object = {};
 
-      let level0Array = returnDistinct(jsonArray, 0);
-      let level1Array = returnDistinct(jsonArray, 1);
-      let level2Array = returnDistinct(jsonArray, 2);
+      let products = [
+        {
+          category: "Guitars",
+          subcategory: [
+            {
+              category: "Electric",
+              subcategories: [
+                { category: "Solid Body" },
+                { category: "Left Handed" },
+              ],
+            },
+            { category: "Acoustic" },
+            { category: "Bass" },
+          ],
+        },
+        { category: "Pedals and Amplifiers" },
+        { category: "Recording Gear" },
+      ];
 
+      let productsJSON = JSON.stringify(products);
+      console.log(productsJSON);
+      console.log(products);
       returnDistinct(jsonArray, 0).forEach((item1) => {
-        let level1 = jsonArray.filter((item) => item[0] == item1);
-        level1 = returnDistinct(level1, 1);
+        let level1Array = jsonArray.filter((item) => item[0] == item1);
+        level1Array = returnDistinct(level1Array, 1);
         if (printDetail) console.log(`___${item1}`);
-        level1.forEach((item2) => {
-          level1.forEach((item2) => {
-            let level2input = jsonArray
+        level1Array.forEach((item2) => {
+          level1Array.forEach((item2) => {
+            let level2Array = jsonArray
               .filter((item) => item[0] == item1)
               .filter((item) => item[1] == item2);
             if (printDetail) console.log(`______${item2}`);
-            let level2Items = returnDistinct(level2input, 2);
-            level2Items.forEach((item3) => {
+            let level3Array = returnDistinct(level2Array, 2);
+            let level3ArrayOut = [];
+            level3Array.forEach((item3) => {
               if (printDetail) console.log(`_________${item3}`);
+              let obj = new Object();
+              obj = objectAddProperty(obj, "category", item3);
+              level3ArrayOut.push(obj);
             });
+            console.log(level3ArrayOut);
           });
         });
       });
