@@ -1,0 +1,462 @@
+[
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Electric Guitars",
+    "MODEL": "Solid Body"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Electric Guitars",
+    "MODEL": "Left-Handed"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Electric Guitars",
+    "MODEL": "Semi-Hollow"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Electric Guitars",
+    "MODEL": "Hollow Body"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Electric Guitars",
+    "MODEL": "12-String"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Electric Guitars",
+    "MODEL": "Archtop"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Electric Guitars",
+    "MODEL": "Baritone"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Electric Guitars",
+    "MODEL": "Pedal Steel"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Electric Guitars",
+    "MODEL": "Tenor"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Electric Guitars",
+    "MODEL": "Lap Steel"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Electric Guitars",
+    "MODEL": "Mini/Travel"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Electric Guitars",
+    "MODEL": "Vintage Electric Guitars"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Bass Guitars",
+    "MODEL": "4-String"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Bass Guitars",
+    "MODEL": "5-String or More"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Bass Guitars",
+    "MODEL": "Short Scale"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Bass Guitars",
+    "MODEL": "Left-Handed"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Bass Guitars",
+    "MODEL": "Fretless"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Bass Guitars",
+    "MODEL": "Acoustic Bass"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Bass Guitars",
+    "MODEL": "Vintage Bass Guitars"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Acoustic Guitars",
+    "MODEL": "Dreadnought"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Acoustic Guitars",
+    "MODEL": "Classical"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Acoustic Guitars",
+    "MODEL": "OM and Auditorium"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Acoustic Guitars",
+    "MODEL": "Parlor"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Acoustic Guitars",
+    "MODEL": "12-String"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Acoustic Guitars",
+    "MODEL": "Left-Handed"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Acoustic Guitars",
+    "MODEL": "Resonator"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Acoustic Guitars",
+    "MODEL": "Archtop"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Acoustic Guitars",
+    "MODEL": "Jumbo"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Acoustic Guitars",
+    "MODEL": "Concert"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Acoustic Guitars",
+    "MODEL": "Tenor"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Acoustic Guitars",
+    "MODEL": "Baritone"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Acoustic Guitars",
+    "MODEL": "Mini/Travel"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Acoustic Guitars",
+    "MODEL": "Vintage Acoustic Guitars"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Guitar Parts and Accessories",
+    "MODEL": "Accessories"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Guitar Parts and Accessories",
+    "MODEL": "Guitar Pickups"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Guitar Parts and Accessories",
+    "MODEL": "Guitar Bodies"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Guitar Parts and Accessories",
+    "MODEL": "Guitar Necks"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Guitar Parts and Accessories",
+    "MODEL": "Guitar Bridges"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Guitar Parts and Accessories",
+    "MODEL": "Pickguards"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Guitar Parts and Accessories",
+    "MODEL": "Tuning Heads"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Guitar Parts and Accessories",
+    "MODEL": "Knobs"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Guitar Parts and Accessories",
+    "MODEL": "Bass Guitar Parts"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Guitar Parts and Accessories",
+    "MODEL": "Bass Pickups"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Guitar Parts and Accessories",
+    "MODEL": "Acoustic Pickups"
+  },
+  {
+    "INSTRUMENT": "Guitars",
+    "TYPE": "Guitar Parts and Accessories",
+    "MODEL": "Bridge Pins"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Effects and Pedals",
+    "MODEL": "Overdrive and Boost"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Effects and Pedals",
+    "MODEL": "Fuzz"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Effects and Pedals",
+    "MODEL": "Delay"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Effects and Pedals",
+    "MODEL": "Reverb"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Effects and Pedals",
+    "MODEL": "Multi-Effects Pedals and Processors"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Effects and Pedals",
+    "MODEL": "Distortion"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Effects and Pedals",
+    "MODEL": "Loop Pedals and Samplers"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Effects and Pedals",
+    "MODEL": "Chorus and Vibrato"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Effects and Pedals",
+    "MODEL": "Compressor and Sustain"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Effects and Pedals",
+    "MODEL": "Octave and Pitch"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Effects and Pedals",
+    "MODEL": "Tremolo"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Effects and Pedals",
+    "MODEL": "Flanger"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Effects and Pedals",
+    "MODEL": "Phase Shifters"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Effects and Pedals",
+    "MODEL": "Wahs and Filters"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Pedal Utilities",
+    "MODEL": "Pedalboard Power Supplies"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Pedal Utilities",
+    "MODEL": "Tuning Pedals"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Pedal Utilities",
+    "MODEL": "EQ"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Pedal Utilities",
+    "MODEL": "Controllers, Volume, and Expression"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Pedal Utilities",
+    "MODEL": "Amp Modeling"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Pedal Utilities",
+    "MODEL": "Cab Sims"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Amplifiers",
+    "MODEL": "Guitar Combos"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Amplifiers",
+    "MODEL": "Guitar Heads"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Amplifiers",
+    "MODEL": "Modeling Amps"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Amplifiers",
+    "MODEL": "Small Amps"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Amplifiers",
+    "MODEL": "Bass Heads"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Amplifiers",
+    "MODEL": "Guitar Cabinets"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Amplifiers",
+    "MODEL": "Bass Combos"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Amplifiers",
+    "MODEL": "Attenuators"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Amplifiers",
+    "MODEL": "Bass Cabinets"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Amplifiers",
+    "MODEL": "Acoustic Amps"
+  },
+  {
+    "INSTRUMENT": "Pedals and Amplifiers",
+    "TYPE": "Amplifiers",
+    "MODEL": "Vintage Amps"
+  },
+  {
+    "INSTRUMENT": "Keyboards and Synths",
+    "TYPE": "Keyboards",
+    "MODEL": "Controllers"
+  },
+  {
+    "INSTRUMENT": "Keyboards and Synths",
+    "TYPE": "Keyboards",
+    "MODEL": "Digital Pianos"
+  },
+  {
+    "INSTRUMENT": "Keyboards and Synths",
+    "TYPE": "Keyboards",
+    "MODEL": "Workstations"
+  },
+  {
+    "INSTRUMENT": "Keyboards and Synths",
+    "TYPE": "Keyboards",
+    "MODEL": "Acoustic Pianos"
+  },
+  {
+    "INSTRUMENT": "Keyboards and Synths",
+    "TYPE": "Keyboards",
+    "MODEL": "Organs"
+  },
+  {
+    "INSTRUMENT": "Keyboards and Synths",
+    "TYPE": "Keyboards",
+    "MODEL": "Electric Pianos"
+  },
+  {
+    "INSTRUMENT": "Keyboards and Synths",
+    "TYPE": "Synths",
+    "MODEL": "Analog"
+  },
+  {
+    "INSTRUMENT": "Keyboards and Synths",
+    "TYPE": "Synths",
+    "MODEL": "Digital"
+  },
+  {
+    "INSTRUMENT": "Keyboards and Synths",
+    "TYPE": "Synths",
+    "MODEL": "Eurorack"
+  },
+  {
+    "INSTRUMENT": "Keyboards and Synths",
+    "TYPE": "Synths",
+    "MODEL": "Modular"
+  },
+  {
+    "INSTRUMENT": "Keyboards and Synths",
+    "TYPE": "Synths",
+    "MODEL": "Rackmount"
+  },
+  {
+    "INSTRUMENT": "Keyboards and Synths",
+    "TYPE": "Synths",
+    "MODEL": "Vintage Synths"
+  },
+  {
+    "INSTRUMENT": "Keyboards and Synths",
+    "TYPE": "Synths",
+    "MODEL": "Mini Synths"
+  },
+  {
+    "INSTRUMENT": "Keyboards and Synths",
+    "TYPE": "Beat Production",
+    "MODEL": "Drum Machines and Samplers"
+  },
+  {
+    "INSTRUMENT": "Keyboards and Synths",
+    "TYPE": "Beat Production",
+    "MODEL": "Pad Controllers"
+  },
+  {
+    "INSTRUMENT": "Keyboards and Synths",
+    "TYPE": "Beat Production",
+    "MODEL": "Software"
+  }
+]

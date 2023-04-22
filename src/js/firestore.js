@@ -38,29 +38,6 @@ const auth = getAuth();
 
 let topLevelCollection = "vehicles";
 
-console.log(getApp().name);
-
-let addRecord = false;
-if (addRecord) {
-  let topLevelCollection = "Dakota";
-  let yearDoc = await addDoc(collection(db, topLevelCollection), {
-    year: "2016",
-  });
-  let yearId = yearDoc.id;
-  let docRefYear = doc(db, topLevelCollection, yearId);
-  let colRefYear = collection(docRefYear, "makes");
-  let makeDoc = await addDoc(colRefYear, {
-    make: "Tesla",
-  });
-  let makeId = makeDoc.id;
-  let docRefMake = doc(db, topLevelCollection, yearId, "makes", makeId);
-  let colRefMake = collection(docRefMake, "makes");
-  let modelDoc = await addDoc(colRefMake, {
-    model: "s",
-  });
-  let modelId = modelDoc.id;
-}
-
 const docSampleData = {
   stringExample: "Hello world!",
   booleanExample: true,
@@ -102,16 +79,133 @@ let firstDocument = {
   description: "Recording Gear",
   active: true,
 };
-let databaseName = "vehicles";
 
+let databaseName = "Blazing";
 //initializeDatabase("Blazing", firstDocument);
-await addDocument(["Blazing"], firstDocument);
+// await addDocument(["Blazing"], firstDocument);
+// await addDocument(["guy"], firstDocument);
+// await addDocument(["guy"], docSampleData);
 
 let newDocs = await getCollectionDocuments(collectionPath1);
 let newDoc = await getDocument(documentPath2);
 
-await addDocument(["guy"], firstDocument);
-await addDocument(["guy"], docSampleData);
+fetchFile();
+
+function fetchFile() {
+  let jsonInput;
+  let jsonArray = [];
+  let categoryObject = [{}];
+  let level0Array = [];
+  let level1Array = [];
+  let level2Array = [];
+  let printDetail = true;
+  let printArray = false;
+  fetch("./json/products.json")
+    .then((response) => response.json())
+    .then((json) => {
+      json.forEach((product) => {
+        let documentData = [product.INSTRUMENT, product.TYPE, product.MODEL];
+        jsonArray.push(documentData);
+      });
+
+      jsonInput = json;
+
+      let unique_0 = returnDistinct(jsonArray, 0);
+      let unique_1;
+
+      unique_0.forEach((item1) => {
+        if (printDetail) console.log(level0Array);
+        let items_1 = jsonArray.filter((item2) => item1 == item2[0]);
+        unique_1 = returnDistinct(items_1, 1);
+        if (printDetail) console.log(`...${item1}`);
+        level0Array.push({ level1: item1 });
+        unique_1.forEach((item3) => {
+          if (printDetail) console.log(`......${item3}`);
+          let items_2 = jsonArray.filter((item4) => item3 == item4[1]);
+          level1Array.push(item3);
+          if (printArray) console.log(level1Array);
+          items_2.forEach((item5) => {
+            if (printDetail) console.log(`.........${item5[2]}`);
+            level2Array.push(item5[2]);
+            if (printArray) console.log(level2Array);
+          });
+          console.log(level2Array);
+          level2Array = [];
+        });
+        console.log(level1Array);
+        level1Array = [];
+      });
+
+      let testObject = [
+        { level0: "guitars" },
+        { level0: "synth" },
+        { level0: "amps" },
+      ];
+
+      let toObject = { ...level0Array };
+      let testObject2 = { ...testObject };
+      let objectGuitar = testObject[0];
+
+      console.log(objectGuitar);
+      //objectGuitar["level1"] = [{ test: "test" }, { test2: "test2" }];
+      objectGuitar = objectAddProperty(objectGuitar, "level1", [
+        { test: "test" },
+        { test2: "test2" },
+      ]);
+
+      console.log(objectGuitar);
+
+      // console.log(testObject);
+      // console.log(toObject);
+      // console.log(testObject2);
+      // console.log(testObject[0]);
+      // console.log(typeof toObject.guitars);
+      // console.log(testObject);
+      // const testObject = Object.fromEntries(level0Array);
+
+      const toGuitars = testObject.filter((item) => item.level0 == "guitars");
+      console.log(toGuitars);
+
+      // console.log(categoryObject);
+      // categoryObject.guitars.subcategory = [
+      //   { subCategory: "Bass Guitars" },
+      //   { subCategory: "Acoustic Guitars" },
+      //   { subCategory: "Electric Guitars" },
+      // ];
+
+      // console.log("Done loading...");
+      // console.log(jsonArray);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+function objectAddProperty(object, property, value) {
+  object[property] = value;
+  return object;
+}
+
+function jsonInsertEmptyArray(input) {
+  console.log(item);
+  objectHierarchy.search;
+  console.log(objectHierarchy);
+  console.log(JSON.stringify(objectHierarchy));
+}
+
+function jsonAddArray(input, array) {}
+
+function returnDistinct(duplicates, index) {
+  const flag = {};
+  const unique = [];
+  duplicates.forEach((item) => {
+    if (!flag[item[index]]) {
+      flag[item[index]] = true;
+      unique.push(item[index]);
+    }
+  });
+  return unique;
+}
 
 function isCollectionPath(collectionPath) {
   if (collectionPath.length % 2 == 0) {
@@ -135,13 +229,10 @@ async function initializeDatabase(databaseName, firstDocument) {
 }
 
 async function addDocument(documentPath, documentData) {
-  console.log("In addDocument...");
   if (isDocumentPath(documentPath)) {
-    console.log("Valid Path");
     let reference = collection(db, ...documentPath);
     await addDoc(reference, documentData)
       .then((result) => {
-        console.log("Document added");
         return true;
       })
       .catch((error) => {
@@ -189,7 +280,6 @@ async function deleteDocument(documentPath) {
         return true;
       })
       .catch((error) => {
-        console.log(error);
         return false;
       });
   } else {
@@ -235,7 +325,6 @@ async function deleteCollection(collectionPath) {
         }); //
         if (isDocuments) {
         }
-        console.log(collectionPath[index], isCollection, isDocuments, index);
       }
     }
   }
