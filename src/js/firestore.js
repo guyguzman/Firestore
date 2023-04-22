@@ -100,6 +100,7 @@ function fetchFile() {
   let level2Array = [];
   let printDetail = true;
   let printArray = false;
+  let objectProduct = [];
   fetch("./json/products.json")
     .then((response) => response.json())
     .then((json) => {
@@ -112,69 +113,32 @@ function fetchFile() {
 
       let unique_0 = returnDistinct(jsonArray, 0);
       let unique_1;
+      let unique_2;
+      let level0Object = {};
+      let level1Object = {};
+      let level2Object = {};
 
-      unique_0.forEach((item1) => {
-        if (printDetail) console.log(level0Array);
-        let items_1 = jsonArray.filter((item2) => item1 == item2[0]);
-        unique_1 = returnDistinct(items_1, 1);
-        if (printDetail) console.log(`...${item1}`);
-        level0Array.push({ level1: item1 });
-        unique_1.forEach((item3) => {
-          if (printDetail) console.log(`......${item3}`);
-          let items_2 = jsonArray.filter((item4) => item3 == item4[1]);
-          level1Array.push(item3);
-          if (printArray) console.log(level1Array);
-          items_2.forEach((item5) => {
-            if (printDetail) console.log(`.........${item5[2]}`);
-            level2Array.push(item5[2]);
-            if (printArray) console.log(level2Array);
+      let level0Array = returnDistinct(jsonArray, 0);
+      let level1Array = returnDistinct(jsonArray, 1);
+      let level2Array = returnDistinct(jsonArray, 2);
+
+      returnDistinct(jsonArray, 0).forEach((item1) => {
+        let level1 = jsonArray.filter((item) => item[0] == item1);
+        level1 = returnDistinct(level1, 1);
+        if (printDetail) console.log(`___${item1}`);
+        level1.forEach((item2) => {
+          level1.forEach((item2) => {
+            let level2input = jsonArray
+              .filter((item) => item[0] == item1)
+              .filter((item) => item[1] == item2);
+            if (printDetail) console.log(`______${item2}`);
+            let level2Items = returnDistinct(level2input, 2);
+            level2Items.forEach((item3) => {
+              if (printDetail) console.log(`_________${item3}`);
+            });
           });
-          console.log(level2Array);
-          level2Array = [];
         });
-        console.log(level1Array);
-        level1Array = [];
       });
-
-      let testObject = [
-        { level0: "guitars" },
-        { level0: "synth" },
-        { level0: "amps" },
-      ];
-
-      let toObject = { ...level0Array };
-      let testObject2 = { ...testObject };
-      let objectGuitar = testObject[0];
-
-      console.log(objectGuitar);
-      //objectGuitar["level1"] = [{ test: "test" }, { test2: "test2" }];
-      objectGuitar = objectAddProperty(objectGuitar, "level1", [
-        { test: "test" },
-        { test2: "test2" },
-      ]);
-
-      console.log(objectGuitar);
-
-      // console.log(testObject);
-      // console.log(toObject);
-      // console.log(testObject2);
-      // console.log(testObject[0]);
-      // console.log(typeof toObject.guitars);
-      // console.log(testObject);
-      // const testObject = Object.fromEntries(level0Array);
-
-      const toGuitars = testObject.filter((item) => item.level0 == "guitars");
-      console.log(toGuitars);
-
-      // console.log(categoryObject);
-      // categoryObject.guitars.subcategory = [
-      //   { subCategory: "Bass Guitars" },
-      //   { subCategory: "Acoustic Guitars" },
-      //   { subCategory: "Electric Guitars" },
-      // ];
-
-      // console.log("Done loading...");
-      // console.log(jsonArray);
     })
     .catch((error) => {
       console.log(error);
@@ -197,14 +161,14 @@ function jsonAddArray(input, array) {}
 
 function returnDistinct(duplicates, index) {
   const flag = {};
-  const unique = [];
+  const uniqueArray = [];
   duplicates.forEach((item) => {
     if (!flag[item[index]]) {
       flag[item[index]] = true;
-      unique.push(item[index]);
+      uniqueArray.push(item[index]);
     }
   });
-  return unique;
+  return uniqueArray;
 }
 
 function isCollectionPath(collectionPath) {
