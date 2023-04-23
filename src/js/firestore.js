@@ -119,6 +119,7 @@ async function parseJSONInput(jsonArray) {
   let level2Array = [];
   let printDetail = true;
   let printArray = false;
+  let writeDatabase = true;
   let objectProduct = [];
 
   let unique_0 = returnDistinct(jsonArray, 0);
@@ -135,39 +136,60 @@ async function parseJSONInput(jsonArray) {
   let level2ArrayOut = [];
 
   let databaseName = "products";
+  let document0;
+  let document1;
+  let document2;
 
   await deleteCollection(databaseName);
 
   for (let itemLevel0 of returnDistinct(jsonArray, 0)) {
     let level1ArrayIn = jsonArray.filter((item) => item[0] == itemLevel0);
     let reference0 = collection(db, "products");
-    let document0 = await addDoc(reference0, {
-      category: itemLevel0,
-    });
-    // let document0 = await addDoc(collection(db, databaseName), {
-    //   category: itemLevel0,
-    // });
+
+    if (writeDatabase) {
+      document0 = await addDoc(reference0, {
+        category: itemLevel0,
+      });
+    }
+
     level1ArrayIn = returnDistinct(level1ArrayIn, 1);
     if (printDetail) console.log(`...${itemLevel0}`);
     for (let item2 of level1ArrayIn) {
       level2ArrayIn = jsonArray
         .filter((item) => item[0] == itemLevel0)
         .filter((item) => item[1] == item2);
+
       if (printDetail) console.log(`......${item2}`);
-      console.log(document0.id);
-      {
+
+      if (writeDatabase) {
         let reference1 = collection(db, "products", document0.id, "sections");
-        let document1 = await addDoc(reference1, {
+        document1 = await addDoc(reference1, {
           category: item2,
         });
       }
+
       level2ArrayIn = returnDistinct(level2ArrayIn, 2);
       level2ArrayOut = [];
-      for (let item3 of level1ArrayIn) {
+
+      for (let item3 of level2ArrayIn) {
         if (printDetail) console.log(`.........${item3}`);
         let obj = new Object();
         obj = objectAddProperty(obj, "category", item3);
         level2ArrayOut.push(obj);
+        if (writeDatabase) {
+          let reference2 = collection(
+            db,
+            "products",
+            document0.id,
+            "sections",
+            document1.id,
+            "subsections"
+          );
+          document2 = await addDoc(reference2, {
+            category: item3,
+          });
+          console.log(document2.id);
+        }
       }
     }
   }
