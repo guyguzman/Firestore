@@ -1,19 +1,19 @@
 import {
-  initializeApp,
-  getApp,
+    initializeApp,
+    getApp,
 } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
 
 import {
-  getFirestore,
-  doc,
-  getDoc,
-  getDocs,
-  collection,
-  query,
-  where,
-  addDoc,
-  deleteDoc,
-  Timestamp,
+    getFirestore,
+    doc,
+    getDoc,
+    getDocs,
+    collection,
+    query,
+    where,
+    addDoc,
+    deleteDoc,
+    Timestamp,
 } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js";
 
 import { getAuth } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
@@ -21,13 +21,13 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth
 import { getStorage } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-storage.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDSXpmMhr3oTvIQ9K06hFKl8P1DD1xKz9w",
-  authDomain: "testfirebase-b84cd.firebaseapp.com",
-  projectId: "testfirebase-b84cd",
-  storageBucket: "testfirebase-b84cd.appspot.com",
-  messagingSenderId: "401210150491",
-  appId: "1:401210150491:web:03a47951d5b2accbe5397e",
-  measurementId: "G-3TWCV45BKW",
+    apiKey: "AIzaSyDSXpmMhr3oTvIQ9K06hFKl8P1DD1xKz9w",
+    authDomain: "testfirebase-b84cd.firebaseapp.com",
+    projectId: "testfirebase-b84cd",
+    storageBucket: "testfirebase-b84cd.appspot.com",
+    messagingSenderId: "401210150491",
+    appId: "1:401210150491:web:03a47951d5b2accbe5397e",
+    measurementId: "G-3TWCV45BKW",
 };
 
 const app = initializeApp(firebaseConfig);
@@ -39,45 +39,45 @@ const auth = getAuth();
 let topLevelCollection = "vehicles";
 
 const docSampleData = {
-  stringExample: "Hello world!",
-  booleanExample: true,
-  numberExample: 3.14159265,
-  dateExample: Timestamp.fromDate(new Date("December 10, 1815")),
-  arrayExample: [5, true, "hello"],
-  nullExample: null,
-  objectExample: {
-    a: 5,
-    b: {
-      nested: "foo",
+    stringExample: "Hello world!",
+    booleanExample: true,
+    numberExample: 3.14159265,
+    dateExample: Timestamp.fromDate(new Date("December 10, 1815")),
+    arrayExample: [5, true, "hello"],
+    nullExample: null,
+    objectExample: {
+        a: 5,
+        b: {
+            nested: "foo",
+        },
     },
-  },
 };
 
 let schema = [
-  { name: "products", level: 0 },
-  { name: "category", level: 1 },
-  { name: "section", level: 2 },
+    { name: "products", level: 0 },
+    { name: "category", level: 1 },
+    { name: "section", level: 2 },
 ];
 
 let collectionPath1 = [
-  "vehicles",
-  "KVvCtLcHnEqInfNKPgje",
-  "makes",
-  "zzZGGkL1gyflRqioOmyc",
-  "models",
+    "vehicles",
+    "KVvCtLcHnEqInfNKPgje",
+    "makes",
+    "zzZGGkL1gyflRqioOmyc",
+    "models",
 ];
 
 let documentPath1 = ["vehicles", "KVvCtLcHnEqInfNKPgje"];
 let documentPath2 = [
-  "vehicles",
-  "KVvCtLcHnEqInfNKPgje",
-  "makes",
-  "zzZGGkL1gyflRqioOmyc",
+    "vehicles",
+    "KVvCtLcHnEqInfNKPgje",
+    "makes",
+    "zzZGGkL1gyflRqioOmyc",
 ];
 let firstDocument = {
-  level0: "recordingGear",
-  description: "Recording Gear",
-  active: true,
+    level0: "recordingGear",
+    description: "Recording Gear",
+    active: true,
 };
 
 let databaseName = "Blazing";
@@ -89,264 +89,256 @@ let databaseName = "Blazing";
 let newDocs = await getCollectionDocuments(collectionPath1);
 let newDoc = await getDocument(documentPath2);
 
-fetchFile();
+await fetchFile();
 
-function fetchFile() {
-  let jsonInput;
-  let jsonArray = [];
-  let categoryObject = [{}];
-  let level0Array = [];
-  let level1Array = [];
-  let level2Array = [];
-  let printDetail = true;
-  let printArray = false;
-  let objectProduct = [];
-  fetch("./json/products.json")
-    .then((response) => response.json())
-    .then((json) => {
-      json.forEach((product) => {
-        let documentData = [product.INSTRUMENT, product.TYPE, product.MODEL];
-        jsonArray.push(documentData);
-      });
+async function fetchFile() {
+    let jsonInput;
+    let jsonArray = [];
+    let categoryObject = [{}];
+    let level0Array = [];
+    let level1Array = [];
+    let level2Array = [];
+    let printDetail = true;
+    let printArray = false;
+    let objectProduct = [];
+    fetch("./json/products.json")
+        .then((response) => response.json())
+        .then((json) => {
+            json.forEach((product) => {
+                let documentData = [product.INSTRUMENT, product.TYPE, product.MODEL];
+                jsonArray.push(documentData);
+            });
 
-      jsonInput = json;
+            jsonInput = json;
 
-      let unique_0 = returnDistinct(jsonArray, 0);
-      let unique_1;
-      let unique_2;
-      let level0Object = {};
-      let level1Object = {};
-      let level2Object = {};
-      let level0ArrayIn = [];
-      let level1ArrayIn = [];
-      let level2ArrayIn = [];
-      let level0ArrayOut = [];
-      let level1ArrayOut = [];
-      let level2ArrayOut = [];
+            let unique_0 = returnDistinct(jsonArray, 0);
+            let unique_1;
+            let unique_2;
+            let level0Object = {};
+            let level1Object = {};
+            let level2Object = {};
+            let level0ArrayIn = [];
+            let level1ArrayIn = [];
+            let level2ArrayIn = [];
+            let level0ArrayOut = [];
+            let level1ArrayOut = [];
+            let level2ArrayOut = [];
 
-      let products = [
-        {
-          category: "Guitars",
-          subcategory: [
-            {
-              category: "Electric",
-              subcategories: [
-                { category: "Solid Body" },
-                { category: "Left Handed" },
-              ],
-            },
-            { category: "Acoustic" },
-            { category: "Bass" },
-          ],
-        },
-        { category: "Pedals and Amplifiers" },
-        { category: "Recording Gear" },
-      ];
+            //deleteDocument(["products", "Guitars"]);
+            // const docRef = doc(db, "vehicles", "827sC68x2l70Msg9f1e1");
+            // deleteDoc(docRef);
+            let snapshot = getCollectionDocuments(db, "products");
 
-      let productsJSON = JSON.stringify(products);
-      // console.log(productsJSON);
-      // console.log(products);
+            if (snapshot.docs.length > 0) {
+                snapshot.forEach((doc) => {
+                    console.log(doc.data());
+                    console.log(doc.id);
+                });
+            }
 
-      returnDistinct(jsonArray, 0).forEach((itemLevel0) => {
-        let level1ArrayIn = jsonArray.filter((item) => item[0] == itemLevel0);
-        level1ArrayIn = returnDistinct(level1ArrayIn, 1);
-        if (printDetail) console.log(`...${itemLevel0}`);
+            const colRef = collection(db, "products");
+            const docsSnap = await getDocs(colRef);
 
-        level1ArrayIn.forEach((item2) => {
-          level2ArrayIn = jsonArray
-            .filter((item) => item[0] == itemLevel0)
-            .filter((item) => item[1] == item2);
-          if (printDetail) console.log(`......${item2}`);
-          level2ArrayIn = returnDistinct(level2ArrayIn, 2);
-          level2ArrayOut = [];
-          level2ArrayIn.forEach((item3) => {
-            if (printDetail) console.log(`.........${item3}`);
-            let obj = new Object();
-            obj = objectAddProperty(obj, "category", item3);
-            level2ArrayOut.push(obj);
-          });
-          //console.log(level2ArrayOut);
+            returnDistinct(jsonArray, 0).forEach((itemLevel0) => {
+                let level1ArrayIn = jsonArray.filter((item) => item[0] == itemLevel0);
+                //addDocument(["products"], { category: itemLevel0 });
+                level1ArrayIn = returnDistinct(level1ArrayIn, 1);
+                if (printDetail) console.log(`...${itemLevel0}`);
+                level1ArrayIn.forEach((item2) => {
+                    level2ArrayIn = jsonArray
+                        .filter((item) => item[0] == itemLevel0)
+                        .filter((item) => item[1] == item2);
+                    if (printDetail) console.log(`......${item2}`);
+                    level2ArrayIn = returnDistinct(level2ArrayIn, 2);
+                    level2ArrayOut = [];
+                    level2ArrayIn.forEach((item3) => {
+                        if (printDetail) console.log(`.........${item3}`);
+                        let obj = new Object();
+                        obj = objectAddProperty(obj, "category", item3);
+                        level2ArrayOut.push(obj);
+                    });
+                    console.log(level2ArrayOut);
+                });
+            });
+        })
+        .catch((error) => {
+            console.log(error);
         });
-      });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
 }
 
 function objectAddProperty(object, property, value) {
-  object[property] = value;
-  return object;
+    object[property] = value;
+    return object;
 }
 
 function jsonInsertEmptyArray(input) {
-  console.log(item);
-  objectHierarchy.search;
-  console.log(objectHierarchy);
-  console.log(JSON.stringify(objectHierarchy));
+    console.log(item);
+    objectHierarchy.search;
+    console.log(objectHierarchy);
+    console.log(JSON.stringify(objectHierarchy));
 }
 
 function jsonAddArray(input, array) {}
 
 function returnDistinct(duplicates, index) {
-  const flag = {};
-  const uniqueArray = [];
-  duplicates.forEach((item) => {
-    if (!flag[item[index]]) {
-      flag[item[index]] = true;
-      uniqueArray.push(item[index]);
+    const flag = {};
+    const uniqueArray = [];
+    duplicates.forEach((item) => {
+        if (!flag[item[index]]) {
+            flag[item[index]] = true;
+            uniqueArray.push(item[index]);
+        }
+    });
+    return uniqueArray;
+}
+
+function isPathLengthEven(path) {
+    if (path.length % 2 == 0) {
+        return true;
+    } else {
+        return false;
     }
-  });
-  return uniqueArray;
 }
 
-function isCollectionPath(collectionPath) {
-  if (collectionPath.length % 2 == 0) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function isDocumentPath(documentPath) {
-  if (documentPath.length % 2 != 0) {
-    return true;
-  } else {
-    return false;
-  }
+function isPathLengthOdd(path) {
+    if (path.length % 2 != 0) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 async function initializeDatabase(databaseName, firstDocument) {
-  let document = await addDoc(collection(db, databaseName), firstDocument);
-  let documentId = document.id;
+    let document = await addDoc(collection(db, databaseName), firstDocument);
+    let documentId = document.id;
 }
 
 async function addDocument(documentPath, documentData) {
-  if (isDocumentPath(documentPath)) {
-    let reference = collection(db, ...documentPath);
-    await addDoc(reference, documentData)
-      .then((result) => {
-        return true;
-      })
-      .catch((error) => {
-        return false;
-      });
-  }
+    if (isPathLengthOdd(documentPath)) {
+        let reference = collection(db, ...documentPath);
+        await addDoc(reference, documentData)
+            .then((result) => {
+                return true;
+            })
+            .catch((error) => {
+                return false;
+            });
+    }
 }
 
 async function updateDocument(documentPath, documentData) {
-  if (isDocumentPath(documentPath)) {
-    let reference = doc(db, ...addDocdocumentPath);
-    await updateDoc(reference, documentData)
-      .then((result) => {
-        return true;
-      })
-      .catch((error) => {
+    if (isPathLengthOdd(documentPath)) {
+        let reference = doc(db, ...addDocdocumentPath);
+        await updateDoc(reference, documentData)
+            .then((result) => {
+                return true;
+            })
+            .catch((error) => {
+                return false;
+            });
+    } else {
         return false;
-      });
-  } else {
-    return false;
-  }
+    }
 }
 
 async function getDocument(documentPath) {
-  if (isDocumentPath(documentPath)) {
-    let reference = doc(db, ...documentPath);
-    let snapshot;
-    snapshot = await getDoc(reference)
-      .then((result) => {
-        return snapshot.data();
-      })
-      .catch((error) => {
+    if (isPathLengthOdd(documentPath)) {
+        let reference = doc(db, ...documentPath);
+        let snapshot;
+        snapshot = await getDoc(reference)
+            .then((result) => {
+                return snapshot.data();
+            })
+            .catch((error) => {
+                return false;
+            });
+    } else {
         return false;
-      });
-  } else {
-    return false;
-  }
+    }
 }
 
 async function deleteDocument(documentPath) {
-  if (isDocumentPath(documentPath)) {
-    let reference = doc(db, ...documentPath);
-    deleteDoc(reference)
-      .then((result) => {
-        return true;
-      })
-      .catch((error) => {
+    if (isPathLengthOdd(documentPath)) {
+        let reference = doc(db, ...documentPath);
+        deleteDoc(reference)
+            .then((result) => {
+                return true;
+            })
+            .catch((error) => {
+                return false;
+            });
+    } else {
         return false;
-      });
-  } else {
-    return false;
-  }
+    }
 }
 
 async function getCollectionDocuments(collectionPath) {
-  if (isCollectionPath(collectionPath)) {
-    let reference = collection(db, ...collectionPath);
-    let snapshot = await getDocs(reference);
-    return snapshot.docs;
-  }
+    if (isPathLengthOdd(collectionPath)) {
+        console.log("Inside getCollectionDocuments", collectionPath);
+        let reference = collection(db, ...collectionPath);
+        let snapshot = await getDocs(reference);
+        return snapshot.docs;
+    }
 }
 
 async function deleteDatabase(databaseName) {
-  let reference = collection(db, databaseName);
-  let snapshot = await getDocs(reference);
-  snapshot.docs.forEach((doc) => {
-    deleteDocument(databaseName, doc.id);
-  });
+    let reference = collection(db, databaseName);
+    let snapshot = await getDocs(reference);
+    snapshot.docs.forEach((doc) => {
+        deleteDocument(databaseName, doc.id);
+    });
 }
 
 async function deleteCollection(collectionPath) {
-  let length = collectionPath.length;
-  let isCollection = false;
-  let isDocuments = false;
-  if (length % 2 != 0) {
-    for (let index = length - 1; index > 0; index--) {
-      let name = collectionPath[index];
-      if (index % 2 == 0) {
-        isCollection = true;
-        isDocuments = false;
-      } else {
-        isCollection = false;
-        isDocuments = true;
-      }
-      if (isCollection) {
-        let reference = collection(db, name);
-        let snapshot = await getDocs(reference);
-        snapshot.docs.forEach((doc) => {
-          deleteDocument(collection, doc.id);
-        }); //
-        if (isDocuments) {
+    let length = collectionPath.length;
+    let isCollection = false;
+    let isDocuments = false;
+    if (length % 2 != 0) {
+        for (let index = length - 1; index > 0; index--) {
+            let name = collectionPath[index];
+            if (index % 2 == 0) {
+                isCollection = true;
+                isDocuments = false;
+            } else {
+                isCollection = false;
+                isDocuments = true;
+            }
+            if (isCollection) {
+                let reference = collection(db, name);
+                let snapshot = await getDocs(reference);
+                snapshot.docs.forEach((doc) => {
+                    deleteDocument(collection, doc.id);
+                }); //
+                if (isDocuments) {}
+            }
         }
-      }
     }
-  }
 }
 
 function Level0(name) {
-  this.name = name;
-  this.fullName = function () {
-    return this.name;
-  };
+    this.name = name;
+    this.fullName = function() {
+        return this.name;
+    };
 }
 
 function Level1(name) {
-  this.name = name;
-  this.fullName = function () {
-    return this.name;
-  };
+    this.name = name;
+    this.fullName = function() {
+        return this.name;
+    };
 }
 
 function Level2(name) {
-  this.name = name;
-  this.fullName = function () {
-    return this.name;
-  };
+    this.name = name;
+    this.fullName = function() {
+        return this.name;
+    };
 }
 
 function Level3(name) {
-  this.name = name;
-  this.fullName = function () {
-    return this.name;
-  };
+    this.name = name;
+    this.fullName = function() {
+        return this.name;
+    };
 }
