@@ -140,9 +140,13 @@ async function parseJSONInput(jsonArray) {
 
   for (let itemLevel0 of returnDistinct(jsonArray, 0)) {
     let level1ArrayIn = jsonArray.filter((item) => item[0] == itemLevel0);
-    let document0 = await addDoc(collection(db, databaseName), {
+    let reference0 = collection(db, "products");
+    let document0 = await addDoc(reference0, {
       category: itemLevel0,
     });
+    // let document0 = await addDoc(collection(db, databaseName), {
+    //   category: itemLevel0,
+    // });
     level1ArrayIn = returnDistinct(level1ArrayIn, 1);
     if (printDetail) console.log(`...${itemLevel0}`);
     for (let item2 of level1ArrayIn) {
@@ -152,14 +156,11 @@ async function parseJSONInput(jsonArray) {
       if (printDetail) console.log(`......${item2}`);
       console.log(document0.id);
       {
-        let reference1 = doc(
-          collection(db, "products", document0.id, "sections")
-        );
-        let document1 = await setDoc(reference1, {
+        let reference1 = collection(db, "products", document0.id, "sections");
+        let document1 = await addDoc(reference1, {
           category: item2,
         });
       }
-
       level2ArrayIn = returnDistinct(level2ArrayIn, 2);
       level2ArrayOut = [];
       for (let item3 of level1ArrayIn) {
