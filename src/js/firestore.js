@@ -117,6 +117,12 @@ function fetchFile() {
       let level0Object = {};
       let level1Object = {};
       let level2Object = {};
+      let level0ArrayIn = [];
+      let level1ArrayIn = [];
+      let level2ArrayIn = [];
+      let level0ArrayOut = [];
+      let level1ArrayOut = [];
+      let level2ArrayOut = [];
 
       let products = [
         {
@@ -138,28 +144,28 @@ function fetchFile() {
       ];
 
       let productsJSON = JSON.stringify(products);
-      console.log(productsJSON);
-      console.log(products);
-      returnDistinct(jsonArray, 0).forEach((item1) => {
-        let level1Array = jsonArray.filter((item) => item[0] == item1);
-        level1Array = returnDistinct(level1Array, 1);
-        if (printDetail) console.log(`___${item1}`);
-        level1Array.forEach((item2) => {
-          level1Array.forEach((item2) => {
-            let level2Array = jsonArray
-              .filter((item) => item[0] == item1)
-              .filter((item) => item[1] == item2);
-            if (printDetail) console.log(`______${item2}`);
-            let level3Array = returnDistinct(level2Array, 2);
-            let level3ArrayOut = [];
-            level3Array.forEach((item3) => {
-              if (printDetail) console.log(`_________${item3}`);
-              let obj = new Object();
-              obj = objectAddProperty(obj, "category", item3);
-              level3ArrayOut.push(obj);
-            });
-            console.log(level3ArrayOut);
+      // console.log(productsJSON);
+      // console.log(products);
+
+      returnDistinct(jsonArray, 0).forEach((itemLevel0) => {
+        let level1ArrayIn = jsonArray.filter((item) => item[0] == itemLevel0);
+        level1ArrayIn = returnDistinct(level1ArrayIn, 1);
+        if (printDetail) console.log(`...${itemLevel0}`);
+
+        level1ArrayIn.forEach((item2) => {
+          level2ArrayIn = jsonArray
+            .filter((item) => item[0] == itemLevel0)
+            .filter((item) => item[1] == item2);
+          if (printDetail) console.log(`......${item2}`);
+          level2ArrayIn = returnDistinct(level2ArrayIn, 2);
+          level2ArrayOut = [];
+          level2ArrayIn.forEach((item3) => {
+            if (printDetail) console.log(`.........${item3}`);
+            let obj = new Object();
+            obj = objectAddProperty(obj, "category", item3);
+            level2ArrayOut.push(obj);
           });
+          //console.log(level2ArrayOut);
         });
       });
     })
