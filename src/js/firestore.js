@@ -81,14 +81,8 @@ let firstDocument = {
   active: true,
 };
 
-// let databaseName = "Blazing";
-//initializeDatabase("Blazing", firstDocument);
-// await addDocument(["Blazing"], firstDocument);
-// await addDocument(["guy"], firstDocument);
-// await addDocument(["guy"], docSampleData);
-
-// let newDocs = await getCollectionDocuments(collectionPath1);
-// let newDoc = await getDocument(documentPath2);
+// const docRef = doc(db, "products", "MYB5Jk2VItyx5bVWQ1qG");
+// deleteDoc(docRef);
 
 await fetchFile();
 
@@ -119,7 +113,7 @@ async function parseJSONInput(jsonArray) {
   let level2Array = [];
   let printDetail = true;
   let printArray = false;
-  let writeDatabase = true;
+  let writeDatabase = false;
   let objectProduct = [];
 
   let unique_0 = returnDistinct(jsonArray, 0);
@@ -136,34 +130,51 @@ async function parseJSONInput(jsonArray) {
   let level2ArrayOut = [];
 
   let databaseName = "products";
-  let document0;
-  let document1;
-  let document2;
+  let productObject = {};
+  let index0 = -1;
+  let index1 = -1;
+  let index2 = -1;
 
   await deleteCollection(databaseName);
 
   for (let itemLevel0 of returnDistinct(jsonArray, 0)) {
+    index0++;
     let level1ArrayIn = jsonArray.filter((item) => item[0] == itemLevel0);
-    let reference0 = collection(db, "products");
+
+    let document0;
+    let document1;
 
     if (writeDatabase) {
-      document0 = await addDoc(reference0, {
+      let reference = collection(db, "products");
+      document0 = await addDoc(reference, {
         category: itemLevel0,
       });
     }
 
+    level0Array.push(itemLevel0);
+    productObject["category"] = level0Array;
+    level1Array = [];
+    console.log(productObject);
+
     level1ArrayIn = returnDistinct(level1ArrayIn, 1);
+
     if (printDetail) console.log(`...${itemLevel0}`);
+
     for (let item2 of level1ArrayIn) {
+      index1++;
       level2ArrayIn = jsonArray
         .filter((item) => item[0] == itemLevel0)
         .filter((item) => item[1] == item2);
 
+      level1Array.push(item2);
+      productObject.category[index0] = level1Array;
+      level2Array = [];
+
       if (printDetail) console.log(`......${item2}`);
 
       if (writeDatabase) {
-        let reference1 = collection(db, "products", document0.id, "sections");
-        document1 = await addDoc(reference1, {
+        let reference = collection(db, "products", document0.id, "sections");
+        document1 = await addDoc(reference, {
           category: item2,
         });
       }
@@ -172,12 +183,14 @@ async function parseJSONInput(jsonArray) {
       level2ArrayOut = [];
 
       for (let item3 of level2ArrayIn) {
+        index2++;
         if (printDetail) console.log(`.........${item3}`);
         let obj = new Object();
         obj = objectAddProperty(obj, "category", item3);
         level2ArrayOut.push(obj);
+
         if (writeDatabase) {
-          let reference2 = collection(
+          let reference = collection(
             db,
             "products",
             document0.id,
@@ -185,10 +198,9 @@ async function parseJSONInput(jsonArray) {
             document1.id,
             "subsections"
           );
-          document2 = await addDoc(reference2, {
+          let document3 = await addDoc(reference, {
             category: item3,
           });
-          console.log(document2.id);
         }
       }
     }
