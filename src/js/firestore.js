@@ -111,9 +111,10 @@ async function parseJSONInput(jsonArray) {
   let level0Array = [];
   let level1Array = [];
   let level2Array = [];
-  let printDetail = true;
+  let printDetail = false;
   let printArray = false;
   let writeDatabase = false;
+  let createObject = true;
   let objectProduct = [];
 
   let unique_0 = returnDistinct(jsonArray, 0);
@@ -151,10 +152,15 @@ async function parseJSONInput(jsonArray) {
       });
     }
 
-    level0Array.push(itemLevel0);
-    productObject["category"] = level0Array;
-    level1Array = [];
-    console.log(productObject);
+    if (createObject) {
+      let object = {};
+      object.category = itemLevel0;
+      level0Array.push(object);
+      productObject.categories = level0Array;
+      level1Array = [];
+      console.log(productObject);
+      index1 = -1;
+    }
 
     level1ArrayIn = returnDistinct(level1ArrayIn, 1);
 
@@ -166,9 +172,15 @@ async function parseJSONInput(jsonArray) {
         .filter((item) => item[0] == itemLevel0)
         .filter((item) => item[1] == item2);
 
-      level1Array.push(item2);
-      productObject.category[index0] = level1Array;
-      level2Array = [];
+      if (createObject) {
+        let object = {};
+        object.category = item2;
+        level1Array.push(object);
+        productObject.categories[index0].categories = level1Array;
+        console.log(productObject);
+        level2Array = [];
+        index2 = -1;
+      }
 
       if (printDetail) console.log(`......${item2}`);
 
@@ -201,6 +213,14 @@ async function parseJSONInput(jsonArray) {
           let document3 = await addDoc(reference, {
             category: item3,
           });
+        }
+        if (createObject) {
+          let object = {};
+          object.category = item3;
+          level2Array.push(object);
+          productObject.categories[index0].categories[index1].categories =
+            level2Array;
+          console.log(productObject);
         }
       }
     }
