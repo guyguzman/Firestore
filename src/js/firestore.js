@@ -83,12 +83,20 @@ let firstDocument = {
 
 // const docRef = doc(db, "products", "MYB5Jk2VItyx5bVWQ1qG");
 // deleteDoc(docRef);
+let productObject = {};
 
-await fetchFile();
+await fetchFile().then((result) => {
+  productObject = result;
+});
+
+for (let item of productObject.categories) {
+  console.log(item.category);
+}
 
 async function fetchFile() {
   let jsonArray = [];
   let jsonInput;
+  let productObject;
   fetch("./json/products.json")
     .then((response) => response.json())
     .then((json) => {
@@ -101,7 +109,10 @@ async function fetchFile() {
     .catch((error) => {
       console.log(error);
     });
-  await parseJSONInput(jsonArray);
+  await parseJSONInput(jsonArray).then((result) => {
+    productObject = result;
+  });
+  return productObject;
 }
 
 async function parseJSONInput(jsonArray) {
@@ -140,7 +151,7 @@ async function parseJSONInput(jsonArray) {
 
   for (let itemLevel0 of returnDistinct(jsonArray, 0)) {
     index0++;
-    let level1ArrayIn = jsonArray.filter((item) => item[0] == itemLevel0);
+    level1ArrayIn = jsonArray.filter((item) => item[0] == itemLevel0);
 
     let document0;
     let document1;
@@ -158,7 +169,6 @@ async function parseJSONInput(jsonArray) {
       level0Array.push(object);
       productObject.categories = level0Array;
       level1Array = [];
-      console.log(productObject);
       index1 = -1;
     }
 
@@ -177,7 +187,6 @@ async function parseJSONInput(jsonArray) {
         object.category = item2;
         level1Array.push(object);
         productObject.categories[index0].categories = level1Array;
-        console.log(productObject);
         level2Array = [];
         index2 = -1;
       }
@@ -220,11 +229,11 @@ async function parseJSONInput(jsonArray) {
           level2Array.push(object);
           productObject.categories[index0].categories[index1].categories =
             level2Array;
-          console.log(productObject);
         }
       }
     }
   }
+  return productObject;
 }
 
 function objectAddProperty(object, property, value) {
