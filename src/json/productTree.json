@@ -1,0 +1,347 @@
+[
+  {
+    "categories": [
+      {
+        "category": "Guitars",
+        "categories": [
+          {
+            "category": "Electric Guitars",
+            "categories": [
+              {
+                "category": "Solid Body"
+              },
+              {
+                "category": "Left-Handed"
+              },
+              {
+                "category": "Semi-Hollow"
+              },
+              {
+                "category": "Hollow Body"
+              },
+              {
+                "category": "12-String"
+              },
+              {
+                "category": "Archtop"
+              },
+              {
+                "category": "Baritone"
+              },
+              {
+                "category": "Pedal Steel"
+              },
+              {
+                "category": "Tenor"
+              },
+              {
+                "category": "Lap Steel"
+              },
+              {
+                "category": "Mini/Travel"
+              },
+              {
+                "category": "Vintage Electric Guitars"
+              }
+            ]
+          },
+          {
+            "category": "Bass Guitars",
+            "categories": [
+              {
+                "category": "4-String"
+              },
+              {
+                "category": "5-String or More"
+              },
+              {
+                "category": "Short Scale"
+              },
+              {
+                "category": "Left-Handed"
+              },
+              {
+                "category": "Fretless"
+              },
+              {
+                "category": "Acoustic Bass"
+              },
+              {
+                "category": "Vintage Bass Guitars"
+              }
+            ]
+          },
+          {
+            "category": "Acoustic Guitars",
+            "categories": [
+              {
+                "category": "Dreadnought"
+              },
+              {
+                "category": "Classical"
+              },
+              {
+                "category": "OM and Auditorium"
+              },
+              {
+                "category": "Parlor"
+              },
+              {
+                "category": "12-String"
+              },
+              {
+                "category": "Left-Handed"
+              },
+              {
+                "category": "Resonator"
+              },
+              {
+                "category": "Archtop"
+              },
+              {
+                "category": "Jumbo"
+              },
+              {
+                "category": "Concert"
+              },
+              {
+                "category": "Tenor"
+              },
+              {
+                "category": "Baritone"
+              },
+              {
+                "category": "Mini/Travel"
+              },
+              {
+                "category": "Vintage Acoustic Guitars"
+              }
+            ]
+          },
+          {
+            "category": "Guitar Parts and Accessories",
+            "categories": [
+              {
+                "category": "Accessories"
+              },
+              {
+                "category": "Guitar Pickups"
+              },
+              {
+                "category": "Guitar Bodies"
+              },
+              {
+                "category": "Guitar Necks"
+              },
+              {
+                "category": "Guitar Bridges"
+              },
+              {
+                "category": "Pickguards"
+              },
+              {
+                "category": "Tuning Heads"
+              },
+              {
+                "category": "Knobs"
+              },
+              {
+                "category": "Bass Guitar Parts"
+              },
+              {
+                "category": "Bass Pickups"
+              },
+              {
+                "category": "Acoustic Pickups"
+              },
+              {
+                "category": "Bridge Pins"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "category": "Pedals and Amplifiers",
+        "categories": [
+          {
+            "category": "Effects and Pedals",
+            "categories": [
+              {
+                "category": "Overdrive and Boost"
+              },
+              {
+                "category": "Fuzz"
+              },
+              {
+                "category": "Delay"
+              },
+              {
+                "category": "Reverb"
+              },
+              {
+                "category": "Multi-Effects Pedals and Processors"
+              },
+              {
+                "category": "Distortion"
+              },
+              {
+                "category": "Loop Pedals and Samplers"
+              },
+              {
+                "category": "Chorus and Vibrato"
+              },
+              {
+                "category": "Compressor and Sustain"
+              },
+              {
+                "category": "Octave and Pitch"
+              },
+              {
+                "category": "Tremolo"
+              },
+              {
+                "category": "Flanger"
+              },
+              {
+                "category": "Phase Shifters"
+              },
+              {
+                "category": "Wahs and Filters"
+              }
+            ]
+          },
+          {
+            "category": "Pedal Utilities",
+            "categories": [
+              {
+                "category": "Pedalboard Power Supplies"
+              },
+              {
+                "category": "Tuning Pedals"
+              },
+              {
+                "category": "EQ"
+              },
+              {
+                "category": "Controllers, Volume, and Expression"
+              },
+              {
+                "category": "Amp Modeling"
+              },
+              {
+                "category": "Cab Sims"
+              }
+            ]
+          },
+          {
+            "category": "Amplifiers",
+            "categories": [
+              {
+                "category": "Guitar Combos"
+              },
+              {
+                "category": "Guitar Heads"
+              },
+              {
+                "category": "Modeling Amps"
+              },
+              {
+                "category": "Small Amps"
+              },
+              {
+                "category": "Bass Heads"
+              },
+              {
+                "category": "Guitar Cabinets"
+              },
+              {
+                "category": "Bass Combos"
+              },
+              {
+                "category": "Attenuators"
+              },
+              {
+                "category": "Bass Cabinets"
+              },
+              {
+                "category": "Acoustic Amps"
+              },
+              {
+                "category": "Vintage Amps"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "category": "Keyboards and Synths",
+        "categories": [
+          {
+            "category": "Keyboards",
+            "categories": [
+              {
+                "category": "Controllers"
+              },
+              {
+                "category": "Digital Pianos"
+              },
+              {
+                "category": "Workstations"
+              },
+              {
+                "category": "Acoustic Pianos"
+              },
+              {
+                "category": "Organs"
+              },
+              {
+                "category": "Electric Pianos"
+              }
+            ]
+          },
+          {
+            "category": "Synths",
+            "categories": [
+              {
+                "category": "Analog"
+              },
+              {
+                "category": "Digital"
+              },
+              {
+                "category": "Eurorack"
+              },
+              {
+                "category": "Modular"
+              },
+              {
+                "category": "Rackmount"
+              },
+              {
+                "category": "Vintage Synths"
+              },
+              {
+                "category": "Mini Synths"
+              }
+            ]
+          },
+          {
+            "category": "Beat Production",
+            "categories": [
+              {
+                "category": "Drum Machines and Samplers"
+              },
+              {
+                "category": "Pad Controllers"
+              },
+              {
+                "category": "Software"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

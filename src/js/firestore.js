@@ -90,7 +90,26 @@ await fetchFile().then((result) => {
 });
 
 for (let item of productObject.categories) {
-  console.log(item.category);
+  //console.log(item.category);
+}
+
+let productObjectJson = JSON.stringify(productObject);
+//console.log(productObjectJson);
+let tempProductObject = JSON.parse(productObjectJson);
+//console.log(tempProductObject);
+
+await fetchTreeFile();
+
+async function fetchTreeFile() {
+  fetch("./json/products.json")
+    .then((response) => {
+      console.log(response);
+      return response.json;
+    })
+    .then((jsondata) => {
+      console.log("inside reading json");
+      console.log(jsondata);
+    });
 }
 
 async function fetchFile() {
