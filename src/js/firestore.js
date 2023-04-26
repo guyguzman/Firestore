@@ -81,34 +81,31 @@ let firstDocument = {
   active: true,
 };
 
-// const docRef = doc(db, "products", "MYB5Jk2VItyx5bVWQ1qG");
-// deleteDoc(docRef);
 let productObject = {};
 
-await fetchFile().then((result) => {
-  productObject = result;
-});
+// await fetchFile().then((result) => {
+//   productObject = result;
+// });
+
+productObject = await fetchFile();
+//console.log(JSON.stringify(productObject));
 
 for (let item of productObject.categories) {
   //console.log(item.category);
 }
 
-let productObjectJson = JSON.stringify(productObject);
-//console.log(productObjectJson);
-let tempProductObject = JSON.parse(productObjectJson);
-//console.log(tempProductObject);
-
 await fetchTreeFile();
 
 async function fetchTreeFile() {
-  fetch("./json/products.json")
-    .then((response) => {
-      console.log(response);
-      return response.json;
+  fetch("./json/productTree.json")
+    .then((response) => response.json())
+    .then((json) => {
+      let array = json;
+      let object = { ...array };
+      console.log(object);
     })
-    .then((jsondata) => {
-      console.log("inside reading json");
-      console.log(jsondata);
+    .catch((error) => {
+      console.log(error);
     });
 }
 
@@ -185,6 +182,7 @@ async function parseJSONInput(jsonArray) {
     if (createObject) {
       let object = {};
       object.category = itemLevel0;
+      object.enabled = true;
       level0Array.push(object);
       productObject.categories = level0Array;
       level1Array = [];
@@ -204,6 +202,7 @@ async function parseJSONInput(jsonArray) {
       if (createObject) {
         let object = {};
         object.category = item2;
+        object.enabled = true;
         level1Array.push(object);
         productObject.categories[index0].categories = level1Array;
         level2Array = [];
@@ -245,6 +244,7 @@ async function parseJSONInput(jsonArray) {
         if (createObject) {
           let object = {};
           object.category = item3;
+          object.enabled = true;
           level2Array.push(object);
           productObject.categories[index0].categories[index1].categories =
             level2Array;
