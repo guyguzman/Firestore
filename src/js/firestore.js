@@ -83,30 +83,35 @@ let firstDocument = {
 
 let productObject = {};
 
-// await fetchFile().then((result) => {
-//   productObject = result;
-// });
+await fetchFile().then((result) => {
+  productObject = result;
+});
 
-productObject = await fetchFile();
-//console.log(JSON.stringify(productObject));
-
-for (let item of productObject.categories) {
-  //console.log(item.category);
-}
-
-await fetchTreeFile();
+await fetchTreeFile().then((result) => {
+  console.log("Inside calling fetchTreeFile()");
+  console.log(result);
+  console.log("Done calling fetchTreeFile()");
+});
 
 async function fetchTreeFile() {
-  fetch("./json/productTree.json")
+  console.log("Inside fetchTreeFile");
+  let object;
+  await fetch("./json/productTree.json")
     .then((response) => response.json())
     .then((json) => {
       let array = json;
-      let object = { ...array };
+      object = { ...array };
+      console.log(typeof array, typeof object);
+      console.log(array);
       console.log(object);
+      console.log("Inside fetchTreeFile - then(json)");
+      return object;
     })
     .catch((error) => {
       console.log(error);
     });
+
+  return object;
 }
 
 async function fetchFile() {
